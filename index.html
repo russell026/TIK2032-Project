@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+     <link rel="stylesheet" href="style.css" /> 
+  </head>
+  <body>
+    <div class="load"></div>
+    <!-- NAVIGATION BAR -->
+    <div class="navbar">
+      <ul class="ul-navbar">
+        <li class="li-navbar">
+          <a style="text-decoration: none" href="index.html">Home</a>
+        </li>
+        <li class="li-navbar">
+          <a style="text-decoration: none" href="gallery.html">Gallery</a>
+        </li>
+        <li class="li-navbar">
+          <a style="text-decoration: none" href="blog.html">Blog</a>
+        </li>
+        <li class="li-navbar">
+          <a style="text-decoration: none" href="contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="container-tulisan">
+      <h1>HOME</h1>
+    </div>
+    <br>
+     <?php
+
+
+
+    // koneksi ke database
+   $koneksi = mysqli_connect("192.168.30.23", "root", "" , "user");
+   
+   
+   
+   
+      // melakukan perintah querry pda database
+   $hasil = mysqli_query($koneksi, "SELECT * FROM users");
+   
+   $data = mysqli_fetch_assoc($hasil);
+   if ($hasil) {
+   
+   //echo "Isi data mahasiswa: " . "<br>";
+       
+     // fetch atau mengambil isi datanya dri database
+   while ($isidatanya = mysqli_fetch_assoc($hasil)) {
+     
+       var_dump($isidatanya);
+        echo "<br>";
+   
+      
+   
+      }
+     // echo " " . "<br>";
+   
+      //echo " " . "<br>";
+   
+     // echo " " . "<br>";
+   
+   // echo "ini adalah batas header";
+   
+       // jika gagal mendapatkan data dri database
+   } else if(!$hasil) {
+   
+   echo mysqli_error($hasil);
+   
+   }
+   
+   //$htmldoc = new DOMDocument();
+     // $htmldoc->load("index.html");
+   
+     
+     // echo $htmldoc->saveHTML();
+   ?>
+    <div class="tulis">
+    <a><!--ini adalah pages home--><?php var_dump($isidatanya); ?></a>
+
+    </div>
+    <script src="jeremia.js"></script>
+  </body>
+  <div class="container-footer">
+    <h4 class="h4-footer">WEBSITE JEREMIA</h4>
+  </div>
+</html>
